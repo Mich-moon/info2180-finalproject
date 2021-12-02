@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,12 +26,12 @@
                     <input type="text" name="lastname" id="lastname" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="text" name="password" id="password" class="form-control" />
+                    <label for="addpassword">Password</label>
+                    <input type="text" name="addpassword" id="addpassword" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" class="form-control" />
+                    <label for="addemail">Email</label>
+                    <input type="text" name="addemail" id="addemail" class="form-control" />
                 </div>
                 <button id="add-user-btn" type="submit" name="submitBtn" class="btn btn-primary">Submit</button>
             </form>

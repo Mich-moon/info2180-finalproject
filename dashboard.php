@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    // Check if the user is logged in, if not then redirect him to login page
+    if(!isset($_SESSION["loggedin"])){
+        header("location: login.php");
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +25,7 @@
     <header>
         <img class="logo" src=".\img\logo.png" alt="bugme logo" />
         <h1 class="logo-text">BugMe Issue Tracker</h1>
+        <span class="text"><?php echo htmlspecialchars($_SESSION["firstname"]." ".$_SESSION["lastname"] ); ?></span>
     </header>
     <nav>
         <ul>

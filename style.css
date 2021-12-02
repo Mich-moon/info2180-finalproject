@@ -33,6 +33,17 @@ header {
   align-items: center;
 }
 
+header span {
+  position: fixed;
+  right: 30;
+  color: #9f7dcc;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans";
+  font-weight: 300;
+}
+
 form {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -87,10 +98,14 @@ button {
   font-weight: 600;
 }
 
+button:hover {
+  background-color: rgb(50, 163, 255);
+}
+
 .login {
   background-color: #dddddd;
   width: 350px;
-  height: 340px;
+  height: 300px;
   padding: 5%;
   display: flex;
   flex-direction: column;
