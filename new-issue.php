@@ -1,52 +1,56 @@
 <?php
-session_start();
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New User</title>
-</head>
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'bugme';
 
-<body>
-    <div class="container">
-        <div class="newissue">
-            <h2>Create Issue</h2>
-            <form action="" method="post">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <input type="text" name="description" id="description" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="assignedto">Assigned To</label>
-                    <select class="form-control" name="assignedto" id="assignedto">
-                        <option value="Marcia Bradie">Marcia Bradie</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="type">Type</label>
-                    <select class="form-control" name="type" id="type">
-                        <option value="Bug">Bug</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="priority">Priority</label>
-                    <select class="form-control" name="priority" id="priority">
-                        <option value="Major">Major</option>
-                    </select>
-                </div>
-                <button id="new-issue-btn" type="submit" name="submitBtn" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
+try {
+	$conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+} catch (Exception $e) {
+	die($e->getMessage());
+}
 
-</body>
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-</html>
+    // storing and sanitizing form inputs
+	$title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
+	$description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+    $assignedto = filter_input(INPUT_POST, 'assignedto', FILTER_SANITIZE_STRING);
+    $type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_STRING);
+    $priority = filter_input(INPUT_POST, 'priority', FILTER_SANITIZE_STRING);
+
+    $isValid = true;
+
+    if (empty($title)) {
+        $isValid = false;
+    }
+
+    if (empty($description)) {
+        $isValid = false;
+    }
+
+    if (empty($assignedto)) {
+        $isValid = false;
+    }
+
+     // insert into database
+    if($isValid) {
+        $created = date('Y-m-d H:i:s');
+        $updated = date('Y-m-d H:i:s');
+        $created_by = $_SESSION['id']; 
+        $status = 'open';
+        
+        $sql = "INSERT INTO issues (title, description, type, priority, status, assigned_to, created_by, created, updated) VALUES('{$title}', '{$description}', '{$type}', '{$priority}', '{$status}', '{$assignedto}', '{$created_by}', '{$created}', '{$updated}')";
+        $conn->exec($sql);
+    }
+
+}
+
+
+// users for the dropdown
+
+$statement = $conn->query("SELECT * FROM users");
+$users = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+require 'new-issue.view.php';

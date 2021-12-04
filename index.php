@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="style.css" rel="stylesheet" type="text/css" />
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="app.js"></script>
     <title>Login</title>
 </head>
@@ -16,21 +15,21 @@
 <body id="doc">
     <section>
         <div class="home-img">
-
+            <img id="home-img" class="login-img" src=".\img\logo-black.png" alt="bugme logo" />
         </div>
         <div class="login">
             <h2>Login</h2>
 
-            <form action="login.php" method="post">
+            <form id="login-form" action="login.php" method="post">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" class="form-control" required />
+                    <input type="email" name="email" id="email" class="form-control" required />
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="text" name="password" id="password" class="form-control" required />
+                    <input type="password" name="password" id="password" class="form-control" required />
                 </div>
-                <button id="login" type="submit" name="logintBtn" class="btn btn-primary">Login</button>
+                <button id="login" type="submit" name="login">Login</button>
             </form>
         </div>
     </section>

@@ -24,7 +24,7 @@ INSERT INTO users (firstname, lastname, password, email, date_joined) VALUES('Ad
 
 DROP TABLE IF EXISTS issues;
 CREATE TABLE issues (
-    id int unsigned not null auto_increment,
+    iid int unsigned not null auto_increment,
     title varchar(255) not null,
     description text not null,
     type varchar(255) not null,
@@ -34,5 +34,5 @@ CREATE TABLE issues (
     created_by int unsigned not null,
     created datetime not null,
     updated datetime not null,
-    primary key(id)
+    primary key(iid)
 );
