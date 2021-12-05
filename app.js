@@ -1,6 +1,6 @@
 "use strict";
 
-window.onload = function() {
+$(document).ready(function() {
 
     $('#login').on('click', function(event) {
         event.preventDefault();
@@ -203,7 +203,7 @@ window.onload = function() {
 
     });
 
-};
+});
 
 
 
