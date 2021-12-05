@@ -108,12 +108,12 @@ $(document).ready(function() {
             xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xmlhttp.onreadystatechange = function() {
                 if(this.readyState == 4 && this.status == 200) {
-                    alert("User added");
+                    console.log("User added");
                 }
             };
             xmlhttp.send('firstname=' + encodeURIComponent(first_name_val) + "&lastname=" + encodeURIComponent(last_name_val) + "&addpassword=" + encodeURIComponent(new_paswd_val) + "&addemail=" + encodeURIComponent(new_email_val));
         } else {
-            alert("Failed to add user");
+            console.log("Failed to add user");
         }
     });
 
@@ -137,12 +137,12 @@ $(document).ready(function() {
             xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xmlhttp.onreadystatechange = function() {
                 if(this.readyState == 4 && this.status == 200) {
-                    alert("Issue created");
+                    console.log("Issue created");
                 }
             };
             xmlhttp.send('title=' + encodeURIComponent(title_val) + "&description=" + encodeURIComponent(description_val) + "&assignedto=" + encodeURIComponent(assignedto_val) + "&type=" + encodeURIComponent(type_val)  + "&priority=" + encodeURIComponent(priority_val) );
         } else {
-            alert("Failed to create issue");
+            console.log("Failed to create issue");
         }
     });
 
