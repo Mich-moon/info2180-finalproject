@@ -1,44 +1,53 @@
 <?php
 session_start();
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add User</title>
-</head>
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'bugme';
 
-<body>
-    <div class="container">
-        <div class="adduser">
-            <h2>Add User</h2>
+try {
+	$conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+} catch (Exception $e) {
+	die($e->getMessage());
+}
 
-            <form action="" method="post">
-                <div class="form-group">
-                    <label for="firstname">Firstname</label>
-                    <input type="text" name="firstname" id="firstname" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="lastname">Lastname</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="addpassword">Password</label>
-                    <input type="text" name="addpassword" id="addpassword" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="addemail">Email</label>
-                    <input type="text" name="addemail" id="addemail" class="form-control" />
-                </div>
-                <button id="add-user-btn" type="submit" name="submitBtn" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
 
-    </div>
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    // storing and sanitizing form inputs
+	$firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
+	$lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
+    $pswd = filter_input(INPUT_POST, 'addpassword', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'addemail', FILTER_VALIDATE_EMAIL);
 
-</body>
+    $pswd_hashed = "";
+    $isValid = true;
 
-</html>
+    if (!preg_match("/^[a-z ,.'-]+$/i", $firstname)) {
+        $isValid = false;
+    }
+
+    if (!preg_match("/^[a-z ,.'-]+$/i", $lastname)) {
+        $isValid = false;
+    }
+
+    if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/", $pswd)) {
+        $isValid = false;
+    } else {
+        $pswd_hashed = password_hash($pswd, PASSWORD_DEFAULT);
+    }
+
+    if (!preg_match("/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/", $email)) {
+        $isValid = false;
+    }
+
+    // insert into database
+    if($isValid) {
+        $createdAt = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO users (firstname, lastname, password, email, date_joined) VALUES('{$firstname}', '{$lastname}', '{$pswd_hashed}', '{$email}', '{$createdAt}')";
+        $conn->exec($sql);
+    }
+
+}
+//require 'add-user.view.php';

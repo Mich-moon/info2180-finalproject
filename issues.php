@@ -1,24 +1,46 @@
 <?php
 session_start();
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Issues</title>
-</head>
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'bugme';
 
-<body>
-    <div class="container">
-        <div class="issues">
-            <h2>Issues</h2>
-        </div>
-    </div>
+try {
+	$conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+} catch (Exception $e) {
+	die($e->getMessage());
+}
+
+if(isset($_GET['query'])) {
+	$query = $_GET["query"]; 
+
+	if($query == "open") {
+		$statement = $conn->query("SELECT * FROM issues JOIN users on users.id = issues.assigned_to where issues.status = 'open' ");
+		$issues = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+	} elseif($query == "my-tickets") {
+		$id = $_SESSION["id"];
+		$statement = $conn->query("SELECT * FROM issues JOIN users on users.id = issues.assigned_to where issues.created_by = '$id' ");
+		$issues = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+	} elseif($query == "all")  {	
+		$statement = $conn->query("SELECT * FROM issues JOIN users on users.id = issues.assigned_to");
+		$issues = $statement->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+} else {
+	$statement = $conn->query("SELECT * FROM issues JOIN users on users.id = issues.assigned_to");
+	$issues = $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+$rows = "";
+foreach ($issues as $row) {
+	$rows.= "<tr><td>#<span>".$row['iid']."</span><a href='#' id='issue-link'> ".$row['title']."</a></td><td>".$row['type']."</td><td>".$row['status']."</td>";
+	$rows.= "<td>".$row['firstname']." ".$row['lastname']."</td><td>".$row['created']."</td></tr>";
+}
+
+echo($rows);
 
 
-</body>
-
-</html>
+require 'issues.view.php';

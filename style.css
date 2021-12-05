@@ -4,6 +4,25 @@ body {
   grid-template-rows: 60px 1fr;
 }
 
+button {
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(51, 116, 255);
+  padding: 6px 50px !important;
+  color: rgb(255, 255, 255);
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: rgb(50, 163, 255);
+}
+
+.btn-small {
+  padding: 10px 20px !important;
+}
+
 .container {
   position: fixed;
   top: 45px;
@@ -17,31 +36,9 @@ body {
   padding: 5%;
 }
 
-h2 {
-  margin-top: -20px !important;
-}
-
-header {
-  grid-column: span 2;
-  grid-row: 1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #0a0a0a;
-  display: flex;
-  align-items: center;
-}
-
-header span {
-  position: fixed;
-  right: 30;
-  color: #9f7dcc;
-  font-size: 18px;
-  letter-spacing: 1px;
-  font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans";
-  font-weight: 300;
+.container-2 {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
 }
 
 form {
@@ -70,36 +67,203 @@ form button {
   margin-bottom: 5px;
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea {
   grid-row: 2;
+}
+
+h2 {
+  margin-top: -20px !important;
+  font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans";
+  font-size: 25px;
+}
+
+header {
+  grid-column: span 2;
+  grid-row: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header div {
+  display: flex;
+  flex-direction: row;
+}
+
+header span {
+  margin-right: 80px;
+  color: #dbdbdb;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans";
+  font-weight: 300;
 }
 
 .home-img {
   grid-column: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#home-img {
+  width: 25%;
+  height: auto;
+  position: fixed;
+  left: 150px !important;
 }
 
 input,
-select {
+select,
+textarea {
   border: 1px solid;
   border-color: #9f7dcc;
   border-radius: 5px;
   padding: 6px !important;
 }
 
-button {
-  border: 1px solid;
-  border-color: #9f7dcc;
-  border-radius: 5px;
-  background-color: rgb(51, 116, 255);
-  padding: 6px 50px !important;
-  color: rgb(255, 255, 255);
-  font-family: sans-serif;
-  font-size: 15px;
-  font-weight: 600;
+.issue-controls {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
 }
 
-button:hover {
-  background-color: rgb(50, 163, 255);
+.issue-controls button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: none;
+}
+
+.issue-controls button:hover {
+  background-color: rgb(51, 116, 255);
+  color: rgb(255, 255, 255);
+}
+
+.issue-controls span {
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#issue-create-btn {
+  background-color: rgb(88, 177, 88);
+}
+
+#issue-create-btn:hover {
+  background-color: rgb(93, 216, 93);
+}
+
+.issues-top {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  padding-bottom: 10px;
+}
+
+.issues-top h2 {
+  grid-column: 1;
+}
+
+.issues-top button {
+  grid-column: 2;
+  right: 80;
+}
+
+#issues-rows tr td span {
+  color: #000000;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans";
+  font-weight: 550;
+}
+
+.issue-link {
+  color: #0884d6;
+  text-decoration: none;
+}
+
+.issue-link:hover {
+  color: #044a79;
+  text-decoration: underline;
+}
+
+.issue-main {
+  grid-column: 1;
+  padding-right: 40px;
+}
+
+.issue-main span {
+  color: #a3a3a3;
+}
+
+.issue-main ul {
+  list-style: none;
+}
+
+.issue-main li {
+  margin-bottom: 10px;
+}
+
+.issue-main li:before {
+  content: "> ";
+}
+
+.issue-side {
+  grid-column: 2;
+}
+
+.issue-side button {
+  width: 100% !important;
+  margin-bottom: 20px;
+  padding: 10px 20px !important;
+}
+
+.issue-side-details {
+  background-color: #dddddd;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: #9f7dcc;
+}
+
+.issue-detail-group {
+  padding-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans";
+  font-size: 14px;
+}
+
+.issue-detail-group label {
+  font-weight: 550;
+}
+
+#issue-progress-btn {
+  background-color: rgb(88, 177, 88);
+}
+
+#issue-progress-btn:hover {
+  background-color: rgb(93, 216, 93);
+}
+
+#insert-issue-num,
+#issue-pre-num {
+  font-weight: 550;
+  font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans";
+  font-size: 16px;
 }
 
 .login {
@@ -116,7 +280,7 @@ button:hover {
 .logo {
   width: 25px;
   height: auto;
-  margin: 10px 30px 10px 30px;
+  margin: 10px 20px 10px 20px;
 }
 
 .logo-text {
@@ -129,8 +293,7 @@ button:hover {
 }
 
 .newissue,
-.adduser,
-.issues {
+.adduser {
   width: 50%;
 }
 
@@ -191,7 +354,7 @@ nav ul li a .text {
 p {
   font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans";
-  font-size: 18px;
+  font-size: 16px;
 }
 
 section {
@@ -204,4 +367,29 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+table {
+  border: none;
+  margin-top: 30px;
+  font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans";
+}
+
+th {
+  border: none;
+  background-color: #dbdbdb;
+  width: 200px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 550;
+}
+
+td {
+  border-bottom: 1px solid rgb(216, 216, 216);
+  border-collapse: collapse;
+  width: 200px;
+  padding: 10px;
+  font-size: 14px !important;
+  font-weight: 400 !important;
 }
