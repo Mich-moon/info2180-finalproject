@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,31 +12,12 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="app.js"></script>
-    <title>Login</title>
+
+    <title>Bugme</title>
 </head>
 
 <body id="doc">
-    <section>
-        <div class="home-img">
-            <img id="home-img" class="login-img" src=".\img\logo-black.png" alt="bugme logo" />
-        </div>
-        <div class="login">
-            <h2>Login</h2>
-
-            <form id="login-form" action="login.php" method="post">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" required />
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" required />
-                </div>
-                <button id="login" type="submit" name="login">Login</button>
-            </form>
-        </div>
-    </section>
-
+    <?php require 'login.view.php'; ?>
 </body>
 
 </html>

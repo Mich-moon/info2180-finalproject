@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $host = 'localhost';
 $username = 'root';
@@ -11,7 +12,7 @@ try {
 	die($e->getMessage());
 }
 
-$go = false;
+$go = 0;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -32,22 +33,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 			if ($user_data 	&&	password_verify($user_data[0]['password'], $hashed_password)) {
-				session_start();
-								
+										
 				// Store data in session variables
 				$_SESSION["loggedin"] = true;
 				$_SESSION["id"] = $user_data[0]['id'];
 				$_SESSION["firstname"] = $user_data[0]['firstname'];  
 				$_SESSION["lastname"] = $user_data[0]['lastname'];                          
-					
-				$go = true;
+								
+				$go = 1;
 			}	
 		}
 	}
 }
-
-if ($go) {
-	require 'dashboard.php';
-} else {
-	require 'index.php';
-}
+echo $go;
+//if ($go) {
+//	require 'dashboard.php';
+//} else {
+//	require 'index.php';
+//}

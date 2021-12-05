@@ -4,14 +4,37 @@ window.onload = function() {
 
     $('#login').on('click', function(event) {
         event.preventDefault();
-        $('#doc').load('login.php'); 
+
+        var valid = $("#login-form")[0].checkValidity();
+
+        if(valid){
+
+            var paswd_val = $('#password').val();
+            var email_val = $('#email').val();
+
+            var url = "login.php";
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST",url);
+            xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xmlhttp.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    var result = this.responseText;
+                    console.log(result);
+                    if(result == 1) {
+                        $('#doc').load('dashboard.php');
+                    } 
+                }
+            };
+            xmlhttp.send("password=" + encodeURIComponent(paswd_val) + "&email=" + encodeURIComponent(email_val));
+        }
     });
 
     // ------ NAV LINKS ------
     $('#logout').on('click', function(event) {
         event.preventDefault();
         $('#doc').load('logout.php'); 
-        window.location.href = "index.php";   
+        $('#doc').load('index.php'); 
+        //window.location.href = "index.php";   
     });
 
     $('#home').on('click', function(event) {
@@ -42,7 +65,7 @@ window.onload = function() {
 
         // id for issue is retireved frm the span next to the link
         var iid = $(this).prev("span").text();
-        //console.log(iid);
+        console.log(iid);
 
         let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -71,7 +94,7 @@ window.onload = function() {
      $("#add-user-btn").on('click', function(event) {
         event.preventDefault();
         
-        var valid = $("#add-user-form").checkValidity();
+        var valid = $("#add-user-form")[0].checkValidity();
 
         var first_name_val = $('#firstname').val();
         var last_name_val = $('#lastname').val();
@@ -99,7 +122,7 @@ window.onload = function() {
     $("#new-issue-btn").on('click', function(event) {
         event.preventDefault();
         
-        var valid = $("#new-issue-form").checkValidity();
+        var valid = $("#new-issue-form")[0].checkValidity();
 
         var title_val = $('#title').val();
         var description_val = $('#description').val();
@@ -164,6 +187,20 @@ window.onload = function() {
         };
         xmlhttp.open("GET", "issues.php?query=my-tickets", true);
         xmlhttp.send();
+    });
+
+    // ------ ISSUE MARK AS CLOSED ------
+    $('#issue-close-btn').on('click', function(event) {
+        event.preventDefault();
+
+
+    });
+
+    // ------ ISSUE MARK IN PROGRESS ------
+    $('#issue-progress-btn').on('click', function(event) {
+        event.preventDefault();
+
+
     });
 
 };
