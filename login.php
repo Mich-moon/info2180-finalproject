@@ -8,7 +8,7 @@ $dbname = 'bugme';
 
 try {
 	//Get Heroku ClearDB connection information
-	$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$cleardb_url = parse_url(getenv("mysql://bdd23740ccccdc:ea70adf6@us-cdbr-east-05.cleardb.net/heroku_e01853a0aaacef2?reconnect=true"));
 	$cleardb_server = $cleardb_url["host"];
 	$cleardb_username = $cleardb_url["user"];
 	$cleardb_password = $cleardb_url["pass"];
