@@ -7,7 +7,18 @@ $password = '';
 $dbname = 'bugme';
 
 try {
-	$conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+	//Get Heroku ClearDB connection information
+	$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$cleardb_server = $cleardb_url["host"];
+	$cleardb_username = $cleardb_url["user"];
+	$cleardb_password = $cleardb_url["pass"];
+	$cleardb_db = substr($cleardb_url["path"],1);
+	$active_group = 'default';
+	$query_builder = TRUE;
+	// Connect to DB
+	$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+	
+	//$conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
 } catch (Exception $e) {
 	die($e->getMessage());
 }
