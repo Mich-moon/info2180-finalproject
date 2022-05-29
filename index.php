@@ -18,6 +18,7 @@ session_start();
 
 <body id="doc">
     <?php require 'login.view.php'; ?>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 </body>
 
 </html>

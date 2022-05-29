@@ -1,4 +1,4 @@
-body {
+#dashboard {
   display: grid;
   grid-template-columns: 230px 1fr;
   grid-template-rows: 60px 1fr;
@@ -41,21 +41,30 @@ button:hover {
   grid-template-columns: 3fr 1fr;
 }
 
-form {
+#add-user-form,
+#new-issue-form {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
 
-form button {
+#add-user-form button,
+#new-issue-form button {
   grid-column: 1;
   margin: 10px;
 }
 
 .form-group {
-  grid-column: span 4;
-  display: grid;
-  grid-template-rows: 1fr 2fr;
-  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  position: relative;
+}
+
+.form-group .iconify {
+  position: absolute;
+  bottom: 11%;
+  border-right: solid 1px rgb(124, 124, 124);
+  padding: 0 2%;
 }
 
 .form-group label {
@@ -105,20 +114,6 @@ header span {
   font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans";
   font-weight: 300;
-}
-
-.home-img {
-  grid-column: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#home-img {
-  width: 25%;
-  height: auto;
-  position: fixed;
-  left: 150px !important;
 }
 
 input,
@@ -267,14 +262,38 @@ textarea {
 }
 
 .login {
-  background-color: #dddddd;
-  width: 350px;
-  height: 300px;
-  padding: 5%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-items: center;
-  grid-column: 2;
+  align-items: center;
+  margin: auto;
+}
+
+.login hr {
+  width: 15%;
+  margin: 2% 0;
+  height: 1px;
+  border: 0;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.login-iconify {
+  position:absolute;
+}
+
+#login-form {
+  border: 1px solid rgb(85, 85, 85);
+  border-radius: 20px;
+  padding: 1%;
+  min-width: 25%;
+}
+
+#login-form .form-group input {
+  text-indent: 25px;
+}
+
+#login {
+  width: 100%
 }
 
 .logo {
@@ -282,6 +301,26 @@ textarea {
   height: auto;
   margin: 10px 20px 10px 20px;
 }
+
+.logo-home {  
+  flex-direction: column;
+  align-items: center;
+  margin: 4% 0;
+}
+
+.logo-home .iconify {  
+  font-size: -webkit-xxx-large;
+}
+
+.logo-home p {  
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-family: "Helvetica Neue", sans-serif, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans";
+  font-weight: 550;
+  margin-top: 0;
+}
+
 
 .logo-text {
   color: white;

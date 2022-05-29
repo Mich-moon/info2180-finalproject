@@ -21,7 +21,7 @@ session_start();
     <title>bugme</title>
 </head>
 
-<body>
+<body id="dashboard">
     <header>
         <div>
             <img class="logo" src=".\img\logo.png" alt="bugme logo" />
