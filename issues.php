@@ -1,16 +1,9 @@
 <?php
-session_start();
-
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'bugme';
-
-try {
-	$conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-} catch (Exception $e) {
-	die($e->getMessage());
+if (session_status() !== PHP_SESSION_ACTIVE) {
+	session_start();
 }
+
+require 'dbConfig.php';
 
 if(isset($_GET['query'])) {
 	$query = $_GET["query"]; 
@@ -43,4 +36,4 @@ foreach ($issues as $row) {
 echo($rows);
 
 
-require 'issues.view.php';
+require_once 'issues.view.php';

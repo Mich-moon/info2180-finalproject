@@ -38,7 +38,9 @@
                     <input type="email" name="addemail" id="addemail" placeholder="e.g. something@email.com"
                         class="form-control" required />
                 </div>
-                <button id="add-user-btn" type="submit" name="add-user-btn">Submit</button>
+                <div class="form-group">
+                    <button id="add-user-btn" type="submit" name="add-user-btn">Submit</button>
+                </div>
             </form>
             <div id="user-msg"></div>
         </div>

@@ -51,7 +51,9 @@
                         <option value="Critical">Critical</option>
                     </select>
                 </div>
-                <button id="new-issue-btn" type="submit" name="new-issue-btn">Submit</button>
+                <div class="form-group">
+                    <button id="new-issue-btn" type="submit" name="new-issue-btn">Submit</button>
+                </div>
             </form>
             <div id="issue-msg"></div>
         </div>
