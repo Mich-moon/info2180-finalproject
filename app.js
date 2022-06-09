@@ -33,8 +33,7 @@ $(document).ready(function() {
     $('#logout').on('click', function(event) {
         event.preventDefault();
         $('#doc').load('logout.php'); 
-        $('#doc').load('index.php'); 
-        //window.location.href = "index.php";   
+        $('#doc').load('login.view.php');  
     });
 
     $('#home').on('click', function(event) {
