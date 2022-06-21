@@ -21,25 +21,25 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     </header>
     <nav>
         <ul>
-            <li>
+            <li class="nav-li nav-active">
                 <a href="" id="home">
                     <span class="iconify" data-icon="ci:home-alt-fill" style="color: white;"></span>
                     <span class="text">Home</span>
                 </a>
             </li>
-            <li>
+            <li class="nav-li">
                 <a href="" id="add-user">
                     <span class="iconify" data-icon="zondicons:user-add" style="color: white;"></span>
                     <span class="text">Add User</span>
                 </a>
             </li>
-            <li>
+            <li class="nav-li">
                 <a href="" id="new-issue">
                     <span class="iconify" data-icon="akar-icons:circle-plus-fill" style="color: white;"></span>
                     <span class="text">New Issue</span>
                 </a>
             </li>
-            <li>
+            <li class="nav-li">
                 <a href="" id="logout">
                     <span class="iconify" data-icon="ri:logout-circle-line" style="color: white;"></span>
                     <span class="text">Logout</span>

@@ -36,3 +36,6 @@ CREATE TABLE issues (
     updated datetime not null,
     primary key(iid)
 );
+
+-- Add an initialissue
+INSERT INTO issues (title, description, type, priority, status, assigned_to, created_by, created, updated) VALUES('First issue', 'the first issue', 'Task', 'Minor', 'open', 1, 1, SYSDATE(), SYSDATE());

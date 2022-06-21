@@ -153,7 +153,8 @@ $(document).ready(function() {
         let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
-                $("#issues-rows").text() = this.responseText;
+                $("#issues-rows").innerHTML = this.responseText;
+                console.log(this.responseText);
             }
         };
         xmlhttp.open("GET", "issues.php?query=all", true);
@@ -168,6 +169,7 @@ $(document).ready(function() {
         xmlhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
                 $("#issues-rows").innerHTML = this.responseText;
+                console.log(this.responseText);
             }
         };
         xmlhttp.open("GET", "issues.php?query=open", true);
@@ -182,6 +184,7 @@ $(document).ready(function() {
         xmlhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
                 $("#issues-rows").innerHTML = this.responseText;
+                console.log(this.responseText);
             }
         };
         xmlhttp.open("GET", "issues.php?query=my-tickets", true);
@@ -200,6 +203,20 @@ $(document).ready(function() {
         event.preventDefault();
 
 
+    });
+
+    // ------ NAV BUTTON EFFECT ------
+    $('.nav-li').on('click', function(e) {
+        e.preventDefault();
+        //e.stopPropagation();
+        const target = e.currentTarget;
+
+        if ( target.classList.contains("nav-active") ) {
+            return;
+        }
+
+        $('.nav-li').removeClass("nav-active");
+        target.classList.add("nav-active");
     });
 
 });
