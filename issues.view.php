@@ -1,4 +1,3 @@
-<script src="app.js"></script>
 
 <div class="container">
     <div class="issues">
@@ -22,6 +21,10 @@
                     <th>Created</th>
                 </tr>
             </thead>
+
+            <!-- <?= console_log($issues); ?> -->
+            <!-- <?= console_log(get_user(4, $users_data)['firstname']); ?> -->
+
             <tbody id="issues-rows">
                 <?php foreach ($issues as $issue): ?>
                 <tr>
@@ -38,3 +41,5 @@
         </table>
     </div>
 </div>
+
+<script src="app.js"></script>
