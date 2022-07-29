@@ -153,8 +153,9 @@ $(document).ready(function() {
         let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
-                $("#issues-rows").innerHTML = this.responseText;
-                console.log(this.responseText);
+                document.querySelector("#issues-rows").innerHTML = this.responseText;
+                //$("#issues-rows").innerHTML = this.responseText;
+                //console.log(this.responseText);
             }
         };
         xmlhttp.open("GET", "issues.php?query=all", true);
@@ -168,8 +169,9 @@ $(document).ready(function() {
         let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
-                $("#issues-rows").innerHTML = this.responseText;
-                console.log(this.responseText);
+                document.querySelector("#issues-rows").innerHTML = this.responseText;
+                //$("#issues-rows").innerHTML = this.responseText;
+                //console.log(this.responseText);
             }
         };
         xmlhttp.open("GET", "issues.php?query=open", true);
@@ -183,8 +185,10 @@ $(document).ready(function() {
         let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
-                $("#issues-rows").innerHTML = this.responseText;
-                console.log(this.responseText);
+                document.querySelector("#issues-rows").innerHTML = this.responseText;
+                //$("#issues-rows").innerHTML = this.responseText;
+                //console.log(this.responseText);
+
             }
         };
         xmlhttp.open("GET", "issues.php?query=my-tickets", true);
