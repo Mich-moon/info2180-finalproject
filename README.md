@@ -24,10 +24,10 @@ After cloning this project, please follow these steps to finish project setup:
 2. Start the sever (WAMP or XAMP). If you have PHP installed separately and have it available on the
    command line, you can start the built-in PHP development server by running `php -S localhost:8080`.
 
-## Online demo
+~~## Online demo~~
 
-This app has been deployed [here](https://nameless-beyond-60584.herokuapp.com/)
+~~This app has been deployed [here](https://nameless-beyond-60584.herokuapp.com/)~~
 
-Login details  
-email: admin@project2.com  
-password: password123
+~~Login details~~  
+~~email: admin@project2.com~~  
+~~password: password123~~
